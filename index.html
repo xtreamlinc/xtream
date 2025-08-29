@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtreamlinc - Internet That Moves as Fast as You Do</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+              <a href="#home"><h2>Xtreamlinc</h2></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#plans">Plans</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="tel:(888)928-3252" class="btn btn-primary">Call Now</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video">
+            <video autoplay muted loop>
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Internet That Moves as Fast as You Do</h1>
+            <p class="hero-subtitle">Unlimited data • 99.9% uptime • 24/7 support <br>(888)928-3252</p>
+            <div class="hero-cta">
+                <a href="tel:(888)928-3252" class="btn btn-large btn-primary">Check Availability</a>
+                <a href="#plans" class="btn btn-large btn-outline">View Plans</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speed Experience Simulator -->
+    <section class="speed-simulator">
+        <div class="container">
+            <h2 class="section-title">Experience Your Perfect Speed</h2>
+            <div class="speed-slider-container">
+                <input type="range" min="50" max="1000" value="200" class="speed-slider" id="speedSlider">
+                <div class="speed-display">
+                    <div class="speed-value">
+                        <span id="speedValue">200</span> Mbps
+                    </div>
+                </div>
+            </div>
+            <div class="speed-use-cases">
+                <div class="use-case" data-speed="50">
+                    <img src="https://images.pexels.com/photos/265685/pexels-photo-265685.jpeg?auto=compress&cs=tinysrgb&w=400" alt="HD Streaming">
+                    <h3>HD Streaming</h3>
+                    <p>Perfect for streaming movies and shows</p>
+                </div>
+                <div class="use-case active" data-speed="200">
+                    <img src="https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400" alt="4K Gaming">
+                    <h3>4K Gaming</h3>
+                    <p>Lag-free gaming and streaming</p>
+                </div>
+                <div class="use-case" data-speed="1000">
+                    <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Smart Home">
+                    <h3>Smart Home</h3>
+                    <p>Multiple devices, no slowdown</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans" id="plans">
+        <div class="container">
+            <h2 class="section-title">Choose Your Perfect Plan</h2>
+            <div class="data-calculator">
+                <h3>Data Usage Calculator</h3>
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label>People in household:</label>
+                        <input type="number" id="householdSize" min="1" max="10" value="4">
+                    </div>
+                    <div class="input-group">
+                        <label>Streaming hours/day:</label>
+                        <input type="number" id="streamingHours" min="0" max="24" value="4">
+                    </div>
+                    <div class="input-group">
+                        <label>Gaming hours/day:</label>
+                        <input type="number" id="gamingHours" min="0" max="12" value="2">
+                    </div>
+                </div>
+                <div class="recommended-plan">
+                    <p>Recommended: <span id="recommendedPlan">Essential Pro</span></p>
+                </div>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Essential Plan">
+                        <h3>Essential</h3>
+                        <div class="plan-price">
+                            <span class="price">$29</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Up to 100 Mbps</li>
+                            <li>Unlimited Data</li>
+                            <li>Basic TV Package</li>
+                            <li>24/7 Support</li>
+                        </ul>
+                    </div>
+                    <a href="tel:(888)928-3252" class="btn btn-outline plan-btn">Get Started</a>
+                </div>
+                <div class="plan-card featured">
+                    <div class="plan-badge">Most Popular</div>
+                    <div class="plan-header">
+                        <img src="https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Essential Pro Plan">
+                        <h3>Essential Pro</h3>
+                        <div class="plan-price">
+                            <span class="price">$49</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Up to 400 Mbps</li>
+                            <li>Unlimited Data</li>
+                            <li>Premium TV Package</li>
+                            <li>Free Installation</li>
+                            <li>Priority Support</li>
+                        </ul>
+                    </div>
+                    <a href="tel:(888)928-3252" class="btn btn-primary plan-btn">Get Started</a>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Ultimate Plan">
+                        <h3>Ultimate</h3>
+                        <div class="plan-price">
+                            <span class="price">$79</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Up to 1 Gbps</li>
+                            <li>Unlimited Data</li>
+                            <li>Premium+ TV Package</li>
+                            <li>Free Installation & Equipment</li>
+                            <li>24/7 Priority Support</li>
+                            <li>Smart Home Setup</li>
+                        </ul>
+                    </div>
+                    <a href="tel:(888)928-3252" class="btn btn-outline plan-btn">Get Started</a>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <img src="https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Business Plan">
+                        <h3>Business</h3>
+                        <div class="plan-price">
+                            <span class="price">$129</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li>Up to 2 Gbps</li>
+                            <li>Unlimited Data</li>
+                            <li>Static IP Address</li>
+                            <li>Business Support</li>
+                            <li>SLA Guarantee</li>
+                            <li>Enterprise Security</li>
+                        </ul>
+                    </div>
+                    <a href="tel:(888)928-3252" class="btn btn-outline plan-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Switch Comparison -->
+    <section class="comparison">
+        <div class="container">
+            <h2 class="section-title">Why Switch to Xtreamlinc?</h2>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comparison-feature">Feature</div>
+                    <div class="comparison-others">Other Providers</div>
+                    <div class="comparison-us">Xtreamlinc</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-feature">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=50" alt="Speed">
+                        Consistent Speed
+                    </div>
+                    <div class="comparison-others">❌ Slowdowns during peak hours</div>
+                    <div class="comparison-us">✅ Guaranteed speeds 24/7</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-feature">
+                        <img src="https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?auto=compress&cs=tinysrgb&w=50" alt="Support">
+                        Customer Support
+                    </div>
+                    <div class="comparison-others">❌ Long wait times</div>
+                    <div class="comparison-us">✅ 24/7 instant support</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-feature">
+                        <img src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=50" alt="Price">
+                        Hidden Fees
+                    </div>
+                    <div class="comparison-others">❌ Surprise charges</div>
+                    <div class="comparison-us">✅ Transparent pricing</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-feature">
+                        <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=50" alt="Installation">
+                        Installation Time
+                    </div>
+                    <div class="comparison-others">❌ 1-2 weeks wait</div>
+                    <div class="comparison-us">✅ Next day installation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entertainment Hub -->
+    <section class="entertainment">
+        <div class="container">
+            <h2 class="section-title">Entertainment Hub Preview</h2>
+            <div class="entertainment-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="https://images.pexels.com/photos/265685/pexels-photo-265685.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Movies">
+                        <h3>Movies</h3>
+                        <p>Latest blockbusters and classics</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sports">
+                        <h3>Sports</h3>
+                        <p>Live games and highlights</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.pexels.com/photos/1181216/pexels-photo-1181216.jpeg?auto=compress&cs=tinysrgb&w=800" alt="News">
+                        <h3>News</h3>
+                        <p>24/7 news coverage</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://images.pexels.com/photos/744780/pexels-photo-744780.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Music">
+                        <h3>Music</h3>
+                        <p>Unlimited music streaming</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-prev">‹</button>
+                    <div class="carousel-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                    </div>
+                    <button class="carousel-next">›</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gamers & Streamers Corner -->
+    <section class="gaming">
+        <div class="gaming-bg">
+            <img src="https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Gaming Setup">
+        </div>
+        <div class="container">
+            <div class="gaming-content">
+                <h2 class="section-title light">Gamers' & Streamers' Corner</h2>
+                <div class="gaming-features">
+                    <div class="gaming-feature">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Ultra-Low Ping</h3>
+                        <p>Under 20ms latency for competitive gaming</p>
+                    </div>
+                    <div class="gaming-feature">
+                        <div class="feature-icon">📺</div>
+                        <h3>4K Buffer-Free</h3>
+                        <p>Stream in crystal clear 4K without interruptions</p>
+                    </div>
+                    <div class="gaming-feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Priority Bandwidth</h3>
+                        <p>Gaming traffic gets priority during peak hours</p>
+                    </div>
+                </div>
+                <a href="tel:(888)928-3252" class="btn btn-primary btn-large">Upgrade for Gaming</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Stories -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Customer Stories + Speed Test Proof</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Customer" class="customer-photo">
+                        <div class="customer-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Family of 5</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Finally, internet that works for our whole family. No more buffering during movie night!"</p>
+                    <div class="speed-proof">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Speed Test Result">
+                        <div class="speed-result">
+                            <div class="speed-number">387 Mbps</div>
+                            <div class="speed-label">Verified Speed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Customer" class="customer-photo">
+                        <div class="customer-info">
+                            <h4>Mike Chen</h4>
+                            <p>Professional Gamer</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The low latency gives me the competitive edge I need. Best internet for gaming!"</p>
+                    <div class="speed-proof">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Speed Test Result">
+                        <div class="speed-result">
+                            <div class="speed-number">892 Mbps</div>
+                            <div class="speed-label">Verified Speed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-header">
+                        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Customer" class="customer-photo">
+                        <div class="customer-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Work from Home</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Crystal clear video calls and instant file uploads. Perfect for remote work!"</p>
+                    <div class="speed-proof">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Speed Test Result">
+                        <div class="speed-result">
+                            <div class="speed-number">456 Mbps</div>
+                            <div class="speed-label">Verified Speed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Journey -->
+    <section class="installation">
+        <div class="container">
+            <h2 class="section-title">Installation Journey</h2>
+            <p class="section-subtitle">From order to online in 24 hours</p>
+            <div class="installation-steps">
+                <div class="step">
+                    <div class="step-icon">📞</div>
+                    <div class="step-content">
+                        <h3>1. Check Availability</h3>
+                        <p>Enter your address and confirm service availability in your area</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-icon">📅</div>
+                    <div class="step-content">
+                        <h3>2. Book Appointment</h3>
+                        <p>Schedule installation at your convenience within 24 hours</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-icon">🔧</div>
+                    <div class="step-content">
+                        <h3>3. Professional Install</h3>
+                        <p>Certified technician installs equipment and tests connection</p>
+                    </div>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-icon">✅</div>
+                    <div class="step-content">
+                        <h3>4. Go Live</h3>
+                        <p>Start enjoying lightning-fast internet immediately</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Map -->
+    <section class="coverage">
+        <div class="container">
+            <h2 class="section-title">Live Outage & Status Map</h2>
+            <div class="coverage-map">
+                <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Coverage Map">
+                <div class="status-indicator">
+                    <div class="status-item">
+                        <div class="status-dot green"></div>
+                        <span>All Systems Operational</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot orange"></div>
+                        <span>Planned Maintenance</span>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-dot red"></div>
+                        <span>Service Disruption</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Home Integration -->
+    <section class="smart-home">
+        <div class="container">
+            <h2 class="section-title">Smart Home Integration</h2>
+            <div class="smart-devices">
+                <div class="device">
+                    <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Wi-Fi Router">
+                    <h3>Wi-Fi 6 Router</h3>
+                    <p>Latest technology included</p>
+                </div>
+                <div class="device">
+                    <img src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Smart Speaker">
+                    <h3>Voice Assistant</h3>
+                    <p>Control your home with voice</p>
+                </div>
+                <div class="device">
+                    <img src="https://images.pexels.com/photos/430208/pexels-photo-430208.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Security Camera">
+                    <h3>Security Systems</h3>
+                    <p>HD security cameras and monitoring</p>
+                </div>
+                <div class="device">
+                    <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Smart Home">
+                    <h3>Smart Devices</h3>
+                    <p>Connect unlimited IoT devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact -->
+    <section class="community">
+        <div class="container">
+            <h2 class="section-title">Community & Local Impact</h2>
+            <div class="community-content">
+                <div class="community-text">
+                    <h3>Connecting Communities</h3>
+                    <p>We're proud to support local schools, libraries, and community centers with high-speed internet access, bridging the digital divide and empowering education.</p>
+                    <div class="community-stats">
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Schools Connected</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50k+</div>
+                            <div class="stat-label">Students Helped</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Public Wi-Fi Spots</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="community-image">
+                    <img src="https://images.pexels.com/photos/1181605/pexels-photo-1181605.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Community Impact">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support" id="support">
+        <div class="container">
+            <h2 class="section-title">Support & Help</h2>
+            <div class="support-options">
+                <div class="support-option">
+                    <div class="support-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Get instant help from our support team</p>
+                    <a href="tel:(888)928-3252" class="btn btn-outline">Start Chat</a>
+                </div>
+                <div class="support-option">
+                    <div class="support-icon">📞</div>
+                    <h3>Call Support</h3>
+                    <p>Speak directly with a technical expert</p>
+                    <a href="tel:(888)928-3252" class="btn btn-outline">Call Now</a>
+                </div>
+                <div class="support-option">
+                    <div class="support-icon">❓</div>
+                    <h3>FAQ Center</h3>
+                    <p>Find answers to common questions</p>
+                    <a href="tel:(888)928-3252" class="btn btn-outline">Browse FAQs</a>
+                </div>
+                <div class="support-option">
+                    <div class="support-icon">🔧</div>
+                    <h3>Self Service</h3>
+                    <p>Manage your account and services online</p>
+                    <a href="tel:(888)928-3252" class="btn btn-outline">Account Portal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience Lightning-Fast Internet?</h2>
+                <p>Join thousands of satisfied customers who've made the switch to Xtreamlinc</p>
+                <div class="cta-buttons">
+                    <a href="tel:(888)928-3252" class="btn btn-primary btn-large">Get Started Today</a>
+                    <a href="tel:(888)928-3252" class="btn btn-outline btn-large light">Check Availability</a>
+                </div>
+            </div>
+            <div class="cta-image">
+                <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=500" alt="High-Speed Internet">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Xtreamlinc</h3>
+                    <p>Internet that moves as fast as you do</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="tel:(888)928-3252">Careers</a></li>
+                        <li><a href="tel:(888)928-3252">Press</a></li>
+                        <li><a href="tel:(888)928-3252">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#support">Help Center</a></li>
+                        <li><a href="tel:(888)928-3252">Contact Us</a></li>
+                        <li><a href="tel:(888)928-3252">Service Status</a></li>
+                        <li><a href="tel:(888)928-3252">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                        <li><a href="tel:(888)928-3252">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with latest offers</p>
+                    <div class="newsletter-signup">
+                        <input type="email" placeholder="Enter your email">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Xtreamlinc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
