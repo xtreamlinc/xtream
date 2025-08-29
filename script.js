@@ -1,170 +1,328 @@
-// Mobile menu toggle
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Speed simulator
-const speedSlider = document.getElementById('speedSlider');
-const speedValue = document.getElementById('speedValue');
-const useCases = document.querySelectorAll('.use-case');
-
-speedSlider.addEventListener('input', (e) => {
-    const value = parseInt(e.target.value);
-    speedValue.textContent = value;
-    
-    // Update active use case
-    useCases.forEach(useCase => {
-        useCase.classList.remove('active');
+// Initialize AOS (Animate on Scroll)
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
     });
-    
-    if (value <= 100) {
-        document.querySelector('[data-speed="50"]').classList.add('active');
-    } else if (value <= 500) {
-        document.querySelector('[data-speed="200"]').classList.add('active');
-    } else {
-        document.querySelector('[data-speed="1000"]').classList.add('active');
-    }
+
+    // Initialize all components
+    initNavbar();
+    initSpeedSimulator();
+    initDataCalculator();
+    initSpeedTest();
+    initMobileMenu();
+    initScrollEffects();
 });
 
-// Data usage calculator
-const householdSize = document.getElementById('householdSize');
-const streamingHours = document.getElementById('streamingHours');
-const gamingHours = document.getElementById('gamingHours');
-const recommendedPlan = document.getElementById('recommendedPlan');
-
-function calculateRecommendedPlan() {
-    const household = parseInt(householdSize.value);
-    const streaming = parseInt(streamingHours.value);
-    const gaming = parseInt(gamingHours.value);
+// Navbar scroll effect
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
     
-    const totalScore = household * 10 + streaming * 5 + gaming * 8;
-    
-    if (totalScore <= 60) {
-        recommendedPlan.textContent = 'Essential';
-        highlightPlan('Essential');
-    } else if (totalScore <= 120) {
-        recommendedPlan.textContent = 'Essential Pro';
-        highlightPlan('Essential Pro');
-    } else if (totalScore <= 200) {
-        recommendedPlan.textContent = 'Ultimate';
-        highlightPlan('Ultimate');
-    } else {
-        recommendedPlan.textContent = 'Business';
-        highlightPlan('Business');
-    }
-}
-
-function highlightPlan(planName) {
-    const planCards = document.querySelectorAll('.plan-card');
-    planCards.forEach(card => {
-        card.classList.remove('featured');
-        if (card.querySelector('h3').textContent === planName) {
-            card.classList.add('featured');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
 
-householdSize.addEventListener('input', calculateRecommendedPlan);
-streamingHours.addEventListener('input', calculateRecommendedPlan);
-gamingHours.addEventListener('input', calculateRecommendedPlan);
-
-// Entertainment carousel
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.dot');
-const prevBtn = document.querySelector('.carousel-prev');
-const nextBtn = document.querySelector('.carousel-next');
-
-function showSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
+// Speed Simulator
+function initSpeedSimulator() {
+    const slider = document.getElementById('speedSlider');
+    const currentSpeedDisplay = document.getElementById('currentSpeed');
+    const benefitItems = document.querySelectorAll('.benefit-item');
     
-    currentSlide = (n + slides.length) % slides.length;
+    if (!slider) return;
     
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
+    slider.addEventListener('input', function() {
+        const speed = parseInt(this.value);
+        currentSpeedDisplay.textContent = speed;
+        
+        // Update active benefits based on speed
+        benefitItems.forEach(item => {
+            const requiredSpeed = parseInt(item.dataset.speed);
+            if (speed >= requiredSpeed) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Add pulse effect to current speed display
+        currentSpeedDisplay.parentElement.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            currentSpeedDisplay.parentElement.style.transform = 'scale(1)';
+        }, 200);
+    });
+    
+    // Initialize with default value
+    slider.dispatchEvent(new Event('input'));
 }
 
-prevBtn.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-});
-
-nextBtn.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-});
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showSlide(index);
-    });
-});
-
-// Auto-play carousel
-setInterval(() => {
-    showSlide(currentSlide + 1);
-}, 5000);
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Data Calculator
+function initDataCalculator() {
+    const streamingInput = document.getElementById('streaming');
+    const gamingInput = document.getElementById('gaming');
+    const devicesInput = document.getElementById('devices');
+    const recommendedPlan = document.getElementById('recommendedPlan');
+    
+    if (!streamingInput || !gamingInput || !devicesInput) return;
+    
+    function calculateRecommendation() {
+        const streaming = parseInt(streamingInput.value) || 0;
+        const gaming = parseInt(gamingInput.value) || 0;
+        const devices = parseInt(devicesInput.value) || 1;
+        
+        // Simple calculation logic
+        let totalScore = (streaming * 2) + (gaming * 3) + devices;
+        
+        let recommendation = "Essential Plan";
+        if (totalScore > 20) {
+            recommendation = "Performance Plan";
+        }
+        if (totalScore > 35) {
+            recommendation = "Ultimate Plan";
+        }
+        
+        recommendedPlan.textContent = recommendation;
+        
+        // Highlight recommended plan card
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.classList.remove('recommended');
+        });
+        
+        // Add glow effect to recommended plan
+        setTimeout(() => {
+            const planCards = document.querySelectorAll('.plan-card h3');
+            planCards.forEach(card => {
+                if (card.textContent.includes(recommendation.split(' ')[0])) {
+                    card.closest('.plan-card').classList.add('recommended');
+                }
             });
-        }
-    });
-});
-
-// Scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Observe all sections for animations
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('fade-in');
-        observer.observe(section);
-    });
-});
-
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-    } else {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-        header.style.boxShadow = 'none';
+        }, 100);
     }
+    
+    // Add event listeners
+    [streamingInput, gamingInput, devicesInput].forEach(input => {
+        input.addEventListener('input', calculateRecommendation);
+    });
+    
+    // Initial calculation
+    calculateRecommendation();
+}
+
+// Speed Test Widget
+function initSpeedTest() {
+    const startButton = document.getElementById('startSpeedTest');
+    const speedResult = document.getElementById('speedResult');
+    const yourSpeed = document.getElementById('yourSpeed');
+    const meterFill = document.querySelector('.meter-fill');
+    
+    if (!startButton) return;
+    
+    startButton.addEventListener('click', function() {
+        this.disabled = true;
+        this.textContent = 'Testing...';
+        
+        // Simulate speed test
+        let currentSpeed = 0;
+        const targetSpeed = Math.floor(Math.random() * 150) + 50; // Random speed between 50-200
+        
+        const interval = setInterval(() => {
+            currentSpeed += Math.floor(Math.random() * 10) + 5;
+            if (currentSpeed >= targetSpeed) {
+                currentSpeed = targetSpeed;
+                clearInterval(interval);
+                this.disabled = false;
+                this.textContent = 'Test Again';
+            }
+            
+            speedResult.textContent = currentSpeed;
+            yourSpeed.textContent = currentSpeed + ' Mbps';
+            
+            // Update meter fill
+            const percentage = (currentSpeed / 200) * 100;
+            meterFill.style.background = `conic-gradient(var(--crystal-aqua) ${percentage * 3.6}deg, #333 0deg)`;
+            
+            // Add pulse effect
+            speedResult.parentElement.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                speedResult.parentElement.style.transform = 'scale(1)';
+            }, 100);
+            
+        }, 100);
+    });
+}
+
+// Mobile Menu
+function initMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (!mobileToggle) return;
+    
+    mobileToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        this.classList.toggle('active');
+    });
+}
+
+// Scroll Effects
+function initScrollEffects() {
+    // Parallax effect for hero
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        const fiberAnimation = document.querySelector('.fiber-animation');
+        if (fiberAnimation) {
+            fiberAnimation.style.transform = `translateY(${rate}px)`;
+        }
+    });
+    
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in');
+                
+                // Special animation for installation steps
+                if (entry.target.classList.contains('step')) {
+                    const steps = document.querySelectorAll('.step');
+                    steps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.querySelector('.step-icon').style.animationDelay = `${index * 0.2}s`;
+                            step.querySelector('.step-icon').classList.add('glow');
+                        }, index * 200);
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for scroll animations
+    document.querySelectorAll('.step, .device-item, .support-card').forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Testimonial card interactions
+document.querySelectorAll('.testimonial-card').forEach(card => {
+    card.addEventListener('click', function() {
+        this.style.transform = this.style.transform.includes('rotateY(180deg)') 
+            ? 'rotateY(0deg)' 
+            : 'rotateY(180deg)';
+    });
 });
 
-// Newsletter signup
-document.querySelector('.newsletter-signup button').addEventListener('click', (e) => {
+// Coverage map marker interactions
+document.querySelectorAll('.marker').forEach(marker => {
+    marker.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 0 30px var(--crystal-aqua)';
+    });
+    
+    marker.addEventListener('mouseleave', function() {
+        this.style.boxShadow = 'none';
+    });
+});
+
+// Smart device hover effects
+document.querySelectorAll('.device-item').forEach(device => {
+    device.addEventListener('mouseenter', function() {
+        const icon = this.querySelector('.device-icon');
+        icon.style.animation = 'pulse 1s ease-in-out infinite';
+    });
+    
+    device.addEventListener('mouseleave', function() {
+        const icon = this.querySelector('.device-icon');
+        icon.style.animation = 'none';
+    });
+});
+
+// Entertainment carousel auto-scroll control
+document.querySelector('.entertainment-carousel').addEventListener('mouseenter', function() {
+    this.querySelector('.carousel-track').style.animationPlayState = 'paused';
+});
+
+document.querySelector('.entertainment-carousel').addEventListener('mouseleave', function() {
+    this.querySelector('.carousel-track').style.animationPlayState = 'running';
+});
+
+// Newsletter form
+document.querySelector('.newsletter-form button').addEventListener('click', function(e) {
     e.preventDefault();
-    const email = document.querySelector('.newsletter-signup input').value;
-    if (email) {
-        alert('Thank you for subscribing! We\'ll keep you updated with our latest offers.');
-        document.querySelector('.newsletter-signup input').value = '';
+    const input = document.querySelector('.newsletter-input');
+    if (input.value.includes('@')) {
+        input.style.borderColor = 'var(--crystal-aqua)';
+        input.style.boxShadow = '0 0 15px rgba(0, 229, 255, 0.3)';
+        this.textContent = 'Subscribed!';
+        this.style.background = 'var(--crystal-aqua)';
+        
+        setTimeout(() => {
+            this.textContent = 'Subscribe';
+            this.style.background = '';
+            input.value = '';
+            input.style.borderColor = '';
+            input.style.boxShadow = '';
+        }, 3000);
+    } else {
+        input.style.borderColor = 'var(--bright-orange)';
+        input.focus();
     }
 });
 
-// Initialize calculator
-calculateRecommendedPlan();
+// Add recommended plan highlighting
+function addRecommendedStyle() {
+    const style = document.createElement('style');
+    style.textContent = `
+        .plan-card.recommended {
+            animation: recommendedGlow 2s ease-in-out 3;
+            border-color: var(--bright-orange) !important;
+        }
+        
+        @keyframes recommendedGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 107, 53, 0.6);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+addRecommendedStyle();
+
+// Performance optimization: Throttle scroll events
+function throttle(func, delay) {
+    let timeoutId;
+    let lastExecTime = 0;
+    return function (...args) {
+        const currentTime = Date.now();
+        
+        if (currentTime - lastExecTime > delay) {
+            func.apply(this, args);
+            lastExecTime = currentTime;
+        } else {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func.apply(this, args);
+                lastExecTime = Date.now();
+            }, delay - (currentTime - lastExecTime));
+        }
+    };
+}
+
+// Optimize scroll event listeners
+window.addEventListener('scroll', throttle(() => {
+    // Scroll-based animations and effects
+}, 16));
