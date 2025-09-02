@@ -251,9 +251,9 @@ body {
 
 .hero-stats {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem; /* smaller gap */
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -261,28 +261,28 @@ body {
   background: var(--glass-white);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 1.5rem;
+  border-radius: 16px; /* slightly smaller corners */
+  padding: 1rem; /* reduced padding */
   text-align: center;
   box-shadow: var(--shadow-crystal);
   transition: all 0.3s ease;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 229, 255, 0.3);
+  transform: translateY(-4px); /* slightly smaller lift */
+  box-shadow: 0 12px 28px rgba(0, 229, 255, 0.25);
 }
 
 .stat-number {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.6rem; /* smaller font */
   font-weight: 700;
   color: var(--crystal-aqua);
   display: block;
 }
 
 .stat-label {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* slightly smaller */
   opacity: 0.8;
   color: white;
 }
