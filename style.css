@@ -190,7 +190,7 @@ body {
 
 .hero-content h1 {
   font-family: var(--font-heading);
-  font-size: 2.3rem;
+  font-size: 2.1rem;
   font-weight: 700;
   margin-bottom: 1rem;
   background: linear-gradient(45deg, white, var(--crystal-aqua));
